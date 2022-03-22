@@ -27,55 +27,61 @@ body {
   text-align: center;
   background: rgba(0,0,0,.5);
   border-radius: 20px;
-  .pad-bank {
-    width: $padWidth * 3 + 40;
-    height: $padHeight * 3 + 40;
-    display: inline-block;
-    margin: 25px;
-    .drum-pad {
-      color: white;
-      position: relative;
-      float: left;
-      width: $padWidth;
-      height: $padHeight;
-      margin-right: 10px;
-      padding-top: 35px;
-      box-sizing: border-box;
-      cursor: pointer;
-      &:hover {
-        background: rgb(205 205 207);
-      }
+}
+
+.pad-bank {
+  width: $padWidth * 3 + 40;
+  height: $padHeight * 3 + 40;
+  display: inline-block;
+  margin: 25px;
+}
+
+.drum-pad {
+  color: white;
+  position: relative;
+  float: left;
+  width: $padWidth;
+  height: $padHeight;
+  margin-right: 10px;
+  padding-top: 35px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.drum-pad:hover {
+  background: rgb(205 205 207);
+}
+
+.controls-container {
+  color: white;
+  width: 240px;
+  height: $padHeight * 3 + 32;
+  display: inline-block;
+  margin: 40px 20px 0 10px;
+  vertical-align: top;
+}
+
+.control {
+  width: 100px;
+  margin: auto;
+  p {
+    margin-bottom: 10px;
+  }
+  .select {
+    @extend .outer-select;
+    .inner {
+      @extend .inner-select;
     }
   }
-  .controls-container {
-    color: white;
-    width: 240px;
-    height: $padHeight * 3 + 32;
-    display: inline-block;
-    margin: 40px 20px 0 10px;
-    vertical-align: top;
-    .control {
-      width: 100px;
-      margin: auto;
-      p {
-        margin-bottom: 10px;
-      }
-      .select {
-        @extend .outer-select;
-        .inner {
-          @extend .inner-select;
-        }
-      }
-    }
-    #display {
-      width: 200px;
-      background: rgba(0,0,0,.5);
-      margin: 15px auto;
-      padding: 15px;
-      box-sizing: border-box;
-      color: white;
-    }
-  }
+}
+
+#display {
+  width: 200px;
+  background: rgba(0,0,0,.5);
+  margin: 15px auto;
+  padding: 15px;
+  box-sizing: border-box;
+  color: white;
 }
 
 .outer-select {
