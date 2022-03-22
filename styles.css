@@ -64,15 +64,17 @@ body {
 .control {
   width: 100px;
   margin: auto;
-  p {
-    margin-bottom: 10px;
-  }
-  .select {
-    @extend .outer-select;
-    .inner {
-      @extend .inner-select;
-    }
-  }
+}  
+
+.control p {
+  margin-bottom: 10px;
+}
+.control p .select {
+  @extend .outer-select;
+}
+
+.control p .select .inner {
+  @extend .inner-select;
 }
 
 #display {
@@ -99,12 +101,9 @@ body {
   cursor: pointer;
 }
 
-@media screen and (max-width: 650px) {
-  .inner-container {
+@media screen and (max-width: 650px) .inner-container {
     transform: scale(0.7);
-  }
 }
-// CUSTOM RANGE INPUT : Credit : https://github.com/darlanrod/input-range-scss/blob/master/_inputrange.scss
 
 $track-color: rgba(0,0,0,.7) !default;
 $thumb-color: rgba(0,0,0,.9) !default;
