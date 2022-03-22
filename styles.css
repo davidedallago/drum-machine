@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
-*{
-  font-family: 'Poppins', sans-serif;
+* {
+  font-family: "Poppins";
 }
+
 
 body {
   font-size: 1.25rem;
+  font-weight: 800;
   user-select: none;
   background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%);
 }
@@ -21,18 +23,18 @@ body {
   position: relative;
   width: 700px;
   text-align: center;
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 20px;
 }
 
-.pad-bank {
+.inner-container .pad-bank {
   width: 100px * 3 + 40;
   height: 100px * 3 + 40;
   display: inline-block;
   margin: 25px;
 }
 
-.drum-pad {
+.inner-container .pad-bank .drum-pad {
   color: white;
   position: relative;
   float: left;
@@ -44,38 +46,39 @@ body {
   cursor: pointer;
 }
 
-.drum-pad:hover {
+.inner-container .pad-bank .drum-pad:hover {
   background: rgb(205 205 207);
 }
 
 .controls-container {
   color: white;
   width: 240px;
-  height: 100px * 3 + 32;
+  height: $padHeight * 3 + 32;
   display: inline-block;
   margin: 40px 20px 0 10px;
   vertical-align: top;
 }
 
-.control {
+.controls-container .control {
   width: 100px;
   margin: auto;
-}  
+}
 
-.control p {
+.controls-container .control p {
   margin-bottom: 10px;
 }
-.control p .select {
+
+.controls-container .control p .select {
   @extend .outer-select;
 }
 
-.control p .select .inner {
+.controls-container .control p .select .inner {
   @extend .inner-select;
 }
 
 #display {
   width: 200px;
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, 0.5);
   margin: 15px auto;
   padding: 15px;
   box-sizing: border-box;
@@ -86,95 +89,114 @@ body {
   margin: auto;
   width: 50px;
   height: 20px;
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .inner-select {
   width: 23px;
   height: 19px;
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   cursor: pointer;
 }
-
-@media screen and (max-width: 650px) .inner-container {
+/*
+@media screen and (max-width: 800px) .inner-container {
     transform: scale(0.7);
 }
 
+/*
+$track-color: rgba(0, 0, 0, 0.7) !default;
+$thumb-color: rgba(0, 0, 0, 0.9) !default;
+
+$thumb-radius: 20px !default;
+$thumb-height: 25px !default;
+$thumb-width: 25px !default;
+
+$track-radius: 20px !default;
+$track-width: 100% !default;
+$track-height: 8px !default;
+
+$contrast: 5% !default;
+
+@mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
+  box-shadow: $shadow-size $shadow-size $shadow-blur $shadow-color,
+    0 0 $shadow-size lighten($shadow-color, 5%);
+}
+
 @mixin track() {
-  width: 100% !default;
-  height: 8px !default;
+  width: $track-width;
+  height: $track-height;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 @mixin thumb() {
-  height: 25px !default;
-  width: 25px !default;
-  background: rgba(0,0,0,.9) !default;
+  height: $thumb-height;
+  width: $thumb-width;
+  background: $thumb-color;
   cursor: pointer;
 }
 
-[type='range'] {
+[type="range"] {
   -webkit-appearance: none;
-  margin: 25px !default / 2 0;
-  width: 100% !default;
+  margin: $thumb-height / 2 0;
+  width: $track-width;
 }
 
-[type='range']:focus {
+[type="range"]:focus {
   outline: none;
 }
 
-[type='range']::-webkit-slider-runnable-track {
+[type="range"]::-webkit-slider-runnable-track {
   @include track();
-  background: rgba(0,0,0,.7) !default;
+  background: $track-color;
 }
 
-[type='range']::-webkit-slider-thumb {
+[type="range"]::-webkit-slider-thumb {
   @include thumb();
   -webkit-appearance: none;
-  margin-top: ((8px !default) / 2) -
-    (25px !default / 2);
+  margin-top: (($track-height) / 2) - ($thumb-height / 2);
 }
 
-[type='range']:focus::-webkit-slider-runnable-track {
-  background: lighten(rgba(0,0,0,.7) !default, 1);
+[type="range"]:focus::-webkit-slider-runnable-track {
+  background: lighten($track-color, $contrast);
 }
 
-[type='range']::-moz-range-track {
+[type="range"]::-moz-range-track {
   @include track();
-  background: rgba(0,0,0,.7) !default;
-  border-radius: 20px !default;
+  background: $track-color;
+  border-radius: $track-radius;
 }
 
-[type='range']::-moz-range-thumb {
+[type="range"]::-moz-range-thumb {
   @include thumb();
 }
 
-[type='range']::-ms-track {
+[type="range"]::-ms-track {
   @include track();
   background: transparent;
   border-color: transparent;
-  border-width: 25px !default 0;
+  border-width: $thumb-width 0;
   color: transparent;
 }
 
-[type='range']::-ms-fill-lower {
-  background: darken(rgba(0,0,0,.7) !default, 1);
+[type="range"]::-ms-fill-lower {
+  background: darken($track-color, $contrast);
 }
 
-[type='range']::-ms-fill-upper {
-  background: rgba(0,0,0,.7) !default;
+[type="range"]::-ms-fill-upper {
+  background: $track-color;
 }
 
-[type='range']::-ms-thumb {
+[type="range"]::-ms-thumb {
   @include thumb();
 }
 
-[type='range']:focus::-ms-fill-lower {
-  background: rgba(0,0,0,.7) !default;
+[type="range"]:focus::-ms-fill-lower {
+  background: $track-color;
 }
-  
-[type='range']:focus::-ms-fill-upper {
-  background: lighten(rgba(0,0,0,.7) !default, 1);
+
+[type="range"]:focus::-ms-fill-upper {
+  background: lighten($track-color, $contrast);
 }
+*/
